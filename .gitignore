@@ -48,3 +48,7 @@ venv/
 
 # Backups
 *.backup
+# Allow FraudShield AI production model files
+!backend/model/fraud_detection_bundle.joblib
+!backend/model/fraud_detection_model.pkl
+!backend/model/.gitkeep

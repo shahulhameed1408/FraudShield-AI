@@ -13,20 +13,16 @@ ENV/
 env.bak/
 venv.bak/
 
-# ML Model checkpoints & weights (preserve folder structure via .gitkeep)
-model/*.joblib
-model/*.pkl
-model/*.h5
-model/*.onnx
-!model/.gitkeep
+# ML Model checkpoints & weights
+*.joblib
+*.pkl
+# Allow FraudShield AI model files
+!model/fraud_detection_bundle.joblib
+!model/fraud_detection_model.pkl
+*.h5
+*.onnx
 
-# Environment variables & secrets
-.env
-.env.local
-.env.*.local
-
-# Operating System & IDE
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Allow FraudShield AI production models
+!backend/model/fraud_detection_bundle.joblib
+!backend/model/fraud_detection_model.pkl
+!backend/model/.gitkeep
