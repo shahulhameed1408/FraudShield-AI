@@ -1,0 +1,25 @@
+# Exclude raw training dataset (150 MB - trained model artifact is already bundled)
+ML/creditcard.csv
+ML/eda.py
+ML/train.py
+
+# Exclude backup model weight files
+backend/model/fraud_detection_model.pkl.backup
+
+# Exclude Git files
+.git/
+.gitignore
+
+# Exclude Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+backend/__pycache__/
+backend/services/__pycache__/
+.pytest_cache/
+
+# Exclude environment files
+.env
+.venv/
+venv/
+env/

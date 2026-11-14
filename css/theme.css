@@ -1,0 +1,137 @@
+/* ==========================================================================
+   FraudShield AI - Theme & Design System Tokens (Professional Green Identity)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Core Color System */
+  --primary: #087F5B;               /* Deep Emerald */
+  --primary-hover: #066749;         /* Darker Emerald for hover */
+  --primary-subtle: #E6F7F0;        /* Very light emerald tint */
+  --secondary: #20C997;             /* Fresh Green */
+  --accent: #D3F9E5;                /* Soft Mint */
+  --bg-base: #F8FAF9;               /* Warm Off-White */
+  --bg-card: #FFFFFF;               /* Clean White */
+  --bg-surface: #FFFFFF;            /* Sidebar/Header Surface */
+  --bg-subtle: #F0F4F2;             /* Subtle Input/Hover background */
+  
+  /* Borders */
+  --border-subtle: #E2E8E5;         /* Soft dividing borders */
+  --border-medium: #CBD5D0;         /* Form & card active borders */
+  --border-focus: #087F5B;          /* Focus ring border */
+  
+  /* Typography Colors */
+  --text-main: #17201D;             /* Deep Charcoal */
+  --text-secondary: #42524C;        /* Secondary reading text */
+  --text-muted: #64716C;            /* Muted / Caption text */
+  --text-white: #FFFFFF;
+  
+  /* Status Colors */
+  --status-safe: #16A34A;           /* SAFE status green */
+  --status-safe-bg: #ECFDF5;
+  --status-safe-border: #A7F3D0;
+  
+  --status-warning: #D97706;        /* WARNING/MEDIUM RISK amber */
+  --status-warning-bg: #FFFBEB;
+  --status-warning-border: #FDE68A;
+  
+  --status-danger: #DC2626;         /* FRAUD/HIGH RISK crimson */
+  --status-danger-bg: #FEF2F2;
+  --status-danger-border: #FECACA;
+
+  /* Typography Fonts */
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  /* Dimensions & Spacing */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 78px;
+  --topbar-height: 70px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* Soft Professional Shadows */
+  --shadow-xs: 0 1px 2px rgba(23, 32, 29, 0.04);
+  --shadow-sm: 0 2px 8px rgba(23, 32, 29, 0.04);
+  --shadow-md: 0 6px 20px rgba(23, 32, 29, 0.06);
+  --shadow-lg: 0 12px 32px rgba(23, 32, 29, 0.08);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Headings Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 { font-size: 28px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+
+p, span, label, input, button, select, textarea {
+  font-family: var(--font-body);
+}
+
+/* Clean Professional Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Monospace Utilities */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Selection Color */
+::selection {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+/* Placeholder Styling */
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.85;
+}

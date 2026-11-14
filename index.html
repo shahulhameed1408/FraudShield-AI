@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FraudShield AI — Autonomous Financial Fraud Detection Workspace</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <!-- Mobile Drawer Overlay -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <div class="app-shell">
+    
+    <!-- ======================================================================
+         1. PERSISTENT COLLAPSIBLE SIDEBAR
+         ====================================================================== -->
+    <aside id="sidebar" class="sidebar">
+      
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand-logo-container">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M12 8v4"/>
+            <path d="M12 16h.01"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">FraudShield <span>AI</span></div>
+          <div class="brand-subtitle">Defense Terminal</div>
+        </div>
+      </div>
+
+      <!-- Navigation List -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Operations</div>
+
+        <a class="nav-item active" data-route="dashboard" title="Dashboard">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="9" rx="1"/>
+              <rect x="14" y="3" width="7" height="5" rx="1"/>
+              <rect x="14" y="12" width="7" height="9" rx="1"/>
+              <rect x="3" y="16" width="7" height="5" rx="1"/>
+            </svg>
+          </div>
+          <span class="nav-label">Dashboard</span>
+        </a>
+
+        <a class="nav-item" data-route="scanner" title="Transaction Scan">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/>
+              <line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+          <span class="nav-label">Transaction Scan</span>
+          <span class="nav-badge" style="background: var(--accent); color: var(--primary); font-weight: 600;">AI</span>
+        </a>
+
+        <a class="nav-item" data-route="alerts" title="Alerts Log">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <span class="nav-label">Alerts Log</span>
+          <span class="nav-badge danger">3 Live</span>
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 10px;">Configuration</div>
+
+        <a class="nav-item" data-route="settings" title="System Settings">
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <span class="nav-label">System Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer with Collapse Button -->
+      <div class="sidebar-footer">
+        <button id="sidebar-toggle-btn" class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          <span class="sidebar-footer-text">Collapse Menu</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. WORKSPACE WRAPPER & TOP BAR
+         ====================================================================== -->
+    <div class="main-wrapper">
+      
+      <!-- High-Tech Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          
+          <div class="page-breadcrumb">
+            <span>Workspace</span>
+            <span>/</span>
+            <span id="breadcrumb-current" class="current">Analytics Dashboard</span>
+          </div>
+        </div>
+
+        <!-- Global Search Field -->
+        <div class="topbar-search-container">
+          <svg class="topbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input 
+            type="text" 
+            id="topbar-global-search" 
+            class="topbar-search-input font-mono" 
+            placeholder="Quick Scan (ID, 0x..., Email)..."
+          />
+          <span class="search-shortcut-badge">Ctrl K</span>
+        </div>
+
+        <!-- Right Tools -->
+        <div class="topbar-right">
+          
+          <!-- AI Engine Status Indicator -->
+          <div class="engine-status-chip">
+            <div class="status-indicator-dot pulse-dot-emerald"></div>
+            <span id="topbar-engine-text">AI Engine: Online</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="topbar-action-btn" title="Live Security Alerts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="topbar-action-badge">3</span>
+          </button>
+
+          <!-- Analyst Profile -->
+          <div class="user-profile-pill">
+            <div class="user-avatar">FS</div>
+            <div class="user-info">
+              <span class="user-name">Security Analyst</span>
+              <span class="user-role font-mono">SOC L1 Terminal</span>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- ====================================================================
+           3. DYNAMIC CONTENT VIEWS
+           ==================================================================== -->
+      <main class="main-content">
+        
+        <!-- ==================================================================
+             VIEW 1: ANALYTICS DASHBOARD (HOME VIEW)
+             ================================================================== -->
+        <section id="view-dashboard" class="view-section active">
+          
+          <!-- Hero KPI Cards (4 Glowing Metric Cards) -->
+          <div class="kpi-grid">
+            
+            <!-- Card 1: Total Transactions Scanned -->
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Total Transactions Scanned</span>
+                <div class="kpi-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value-container">
+                <span id="kpi-total-scanned" class="kpi-value">148,290</span>
+                <span class="kpi-badge positive">+14.2%</span>
+              </div>
+              <div class="kpi-subtext">Across card, wire, UPI & Web3 channels</div>
+            </div>
+
+            <!-- Card 2: Blocked Fraud Attempts -->
+            <div class="kpi-card crimson-accent">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Blocked Fraud Attempts</span>
+                <div class="kpi-icon-box crimson">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <line x1="9" y1="9" x2="15" y2="15"/>
+                    <line x1="15" y1="9" x2="9" y2="15"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value-container">
+                <span id="kpi-blocked-attempts" class="kpi-value" style="color: var(--status-danger);">1,842</span>
+                <span class="kpi-badge danger">+3.1%</span>
+              </div>
+              <div class="kpi-subtext">Interception loss prevented: $2.4M</div>
+            </div>
+
+            <!-- Card 3: Current Risk Index -->
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">Current Risk Index</span>
+                <div class="kpi-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value-container">
+                <span id="kpi-risk-index" class="kpi-value">18/100</span>
+                <span class="kpi-badge positive">LOW THREAT</span>
+              </div>
+              <div class="kpi-subtext">Global threat heuristic posture stable</div>
+            </div>
+
+            <!-- Card 4: AI Efficiency Rate -->
+            <div class="kpi-card">
+              <div class="kpi-card-header">
+                <span class="kpi-title">AI Efficiency Rate</span>
+                <div class="kpi-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value-container">
+                <span id="kpi-ai-efficiency" class="kpi-value" style="color: var(--primary);">99.4%</span>
+                <span class="kpi-badge positive font-mono">0.02% FPR</span>
+              </div>
+              <div class="kpi-subtext">Real-time sub-50ms inference latency</div>
+            </div>
+
+          </div>
+
+          <!-- Live Attack Map / Chart Section -->
+          <div class="cyber-card chart-section-card">
+            <div class="cyber-card-header">
+              <div class="card-title-group">
+                <h2 class="card-title">Fraud Attempts Over Time</h2>
+                <span class="card-subtitle">Real-time attack vector volume vs verified safe throughput</span>
+              </div>
+              <div class="chart-header-controls">
+                <div class="timeframe-pill-group">
+                  <button class="timeframe-btn active" data-timeframe="24h">24H</button>
+                  <button class="timeframe-btn" data-timeframe="7d">7D</button>
+                  <button class="timeframe-btn" data-timeframe="30d">30D</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart Mounting Point -->
+            <div id="dashboard-attack-chart-container"></div>
+          </div>
+
+          <!-- Real-Time Feed Table Section -->
+          <div class="cyber-card">
+            <div class="cyber-card-header">
+              <div class="card-title-group">
+                <h2 class="card-title">Real-Time Transaction Feed</h2>
+                <div class="live-feed-badge-pulse">
+                  <span class="pulse-dot-emerald" style="width:7px; height:7px; background:var(--status-safe); border-radius:50%;"></span>
+                  STREAM ACTIVE
+                </div>
+              </div>
+              <div class="card-subtitle">Live stream monitoring incoming transactions across payment channels</div>
+            </div>
+
+            <div class="cyber-table-container">
+              <table class="cyber-table">
+                <thead>
+                  <tr>
+                    <th>Tx ID</th>
+                    <th>Time</th>
+                    <th>Entity Identifier</th>
+                    <th>Channel</th>
+                    <th>Amount</th>
+                    <th>AI Status</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="live-feed-table-body">
+                  <!-- Injected dynamically by dashboardView.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 2: TRANSACTION CHECKER (DEEP SCAN TOOL)
+             ================================================================== -->
+        <section id="view-scanner" class="view-section">
+          
+          <div class="checker-view-container">
+            
+            <div class="scanner-hero">
+              <div class="scanner-hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                XGBOOST ML INFERENCE ENGINE
+              </div>
+              <h1 class="scanner-hero-title">Transaction Risk <span>Analysis Console</span></h1>
+              <p class="scanner-hero-desc">
+                Evaluate financial transaction risk using genuine machine learning inference on trained PCA dataset vectors, or inspect metadata against operational security heuristics.
+              </p>
+
+              <!-- Mode Selector Tabs -->
+              <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                <button id="tab-sample-mode" class="timeframe-btn active" style="padding: 8px 18px; font-weight: 600;">
+                  ⚡ Real Dataset Transaction (Authentic ML Model)
+                </button>
+                <button id="tab-custom-mode" class="timeframe-btn" style="padding: 8px 18px;">
+                  📝 Standard Metadata Form (Human Fields)
+                </button>
+              </div>
+            </div>
+
+            <!-- PANEL 1: Real Dataset Sample Inference (Option A - Preferred for College Demo) -->
+            <div id="panel-sample-mode" class="scan-console-box" style="margin-bottom: 24px;">
+              <div style="background: var(--primary-subtle); border: 1px solid var(--accent); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; font-size: 13px; line-height: 1.5; color: var(--text-secondary);">
+                <div style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary); margin-bottom: 4px;">
+                  <span class="badge badge-safe">Verified ML Pipeline</span>
+                  Genuine Credit Card Fraud Dataset (30 Features)
+                </div>
+                The trained <b>XGBoost Classifier</b> requires 30 numerical features (<code>Time</code>, <code>V1</code>–<code>V28</code>, and <code>Amount</code>). 
+                Select an authentic transaction row extracted from the <code>creditcard.csv</code> test set below to execute genuine model inference with real-time probability scoring.
+              </div>
+
+              <div class="cyber-form-group" style="margin-bottom: 16px;">
+                <label class="cyber-label">Select Authentic Dataset Test Row</label>
+                <select id="sample-row-select" class="cyber-control font-mono" style="font-size: 13px; padding: 10px 14px;">
+                  <option value="">Loading test rows from dataset...</option>
+                </select>
+              </div>
+
+              <!-- Selected Sample Details Card -->
+              <div id="sample-details-card" style="background: var(--bg-subtle); border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px; border: 1px solid var(--border-subtle);">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                  <div>
+                    <span id="sample-card-title" style="font-weight: 600; font-size: 14px; color: var(--text-main);">Selected Row</span>
+                    <span id="sample-card-gt" class="badge badge-safe" style="margin-left: 8px;">Ground Truth: Legitimate</span>
+                  </div>
+                  <div class="font-mono" style="font-size: 12px; color: var(--text-muted);">
+                    Amount: <b id="sample-card-amount" style="color: var(--primary); font-size: 13px;">$0.00</b> • 
+                    Time: <span id="sample-card-time">0s</span>
+                  </div>
+                </div>
+
+                <!-- Collapsible 30 features list -->
+                <details style="font-size: 12px; color: var(--text-muted); cursor: pointer;">
+                  <summary style="font-weight: 600; color: var(--primary); margin-bottom: 8px; outline: none;">
+                    Inspect All 30 Numerical Features (Time, V1..V28, Amount)
+                  </summary>
+                  <div id="sample-features-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 6px; max-height: 180px; overflow-y: auto; padding: 8px; background: #fff; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 11px;">
+                    <!-- Populated dynamically -->
+                  </div>
+                </details>
+              </div>
+
+              <!-- Action Button for Real Inference -->
+              <button id="btn-run-sample-scan" class="btn btn-primary scan-action-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                <span class="btn-text">RUN GENUINE ML INFERENCE</span>
+              </button>
+            </div>
+
+            <!-- PANEL 2: Standard Human-Readable Fields Form -->
+            <div id="panel-custom-mode" class="scan-console-box" style="display: none;">
+              
+              <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; font-size: 12.5px; line-height: 1.5; color: #92400E;">
+                <b>Notice on Feature Compatibility:</b><br/>
+                The current trained model was fitted on anonymized PCA components (<code>V1</code>–<code>V28</code>). Standard human payment fields (Transaction ID, Channel, IP, Location) cannot be scored by this model until an upstream feature mapping is added. Submitting this form tests backend input validation and returns an honest diagnostic report.
+              </div>
+
+              <div class="scan-input-group">
+                <svg class="scan-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input 
+                  type="text" 
+                  id="scan-entity-input" 
+                  class="scan-primary-input" 
+                  placeholder="Enter Transaction ID (TXN-...), Wallet Address (0x...), or Customer Email..."
+                  autocomplete="off"
+                />
+              </div>
+
+              <!-- Auto-Detect Pill Indicator -->
+              <div class="auto-detect-container">
+                <div id="scan-detect-pill" class="detect-pill">
+                  <span id="scan-detect-icon" style="display:flex; align-items:center;">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                  </span>
+                  <span id="scan-detect-text">Auto-detecting format...</span>
+                </div>
+
+                <div class="input-samples-hint">
+                  Try sample:
+                  <span class="sample-link" data-sample="suspicious_bot@proton.me">High-Risk Email</span> •
+                  <span class="sample-link" data-sample="0x89C4f7033B918B21F771d">Crypto Wallet</span> •
+                  <span class="sample-link" data-sample="TXN-9842104">Standard Tx</span>
+                </div>
+              </div>
+
+              <!-- Advanced Parameters (Collapsible) -->
+              <div id="advanced-toggle-btn" class="advanced-parameters-toggle">
+                <span>Advanced Parameters (Amount, Payment Gateway, IP Geolocation)</span>
+                <span class="toggle-arrow" style="transition: transform 0.2s;">▼</span>
+              </div>
+
+              <div id="advanced-params-grid" class="advanced-form-grid" style="display: none;">
+                <div class="cyber-form-group">
+                  <label class="cyber-label">Amount</label>
+                  <input type="number" id="adv-amount" class="cyber-control" placeholder="e.g. 1250.00" />
+                </div>
+                <div class="cyber-form-group">
+                  <label class="cyber-label">Currency</label>
+                  <select id="adv-currency" class="cyber-control">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="INR">INR (₹)</option>
+                    <option value="ETH">ETH (Ξ)</option>
+                  </select>
+                </div>
+                <div class="cyber-form-group">
+                  <label class="cyber-label">Payment Channel</label>
+                  <select id="adv-payment-method" class="cyber-control">
+                    <option value="Credit Card">Credit Card (Stripe/Checkout)</option>
+                    <option value="Wire Transfer">Instant Wire Transfer</option>
+                    <option value="UPI Direct">UPI / Fast Direct</option>
+                    <option value="Web3 Gateway">Crypto / Web3 Smart Contract</option>
+                  </select>
+                </div>
+                <div class="cyber-form-group">
+                  <label class="cyber-label">Routing IP</label>
+                  <input type="text" id="adv-ip" class="cyber-control" placeholder="e.g. 185.220.101.5" />
+                </div>
+                <div class="cyber-form-group">
+                  <label class="cyber-label">User Baseline Location</label>
+                  <input type="text" id="adv-location" class="cyber-control" placeholder="e.g. California, US" />
+                </div>
+              </div>
+
+              <!-- Action Button -->
+              <button id="scan-action-btn" class="btn btn-secondary scan-action-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                <span class="btn-text">TEST BACKEND WITH HUMAN FIELDS</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 3: DEEP SCAN RESULT VIEW
+             ================================================================== -->
+        <section id="view-result" class="view-section">
+          
+          <div class="result-view-container">
+            
+            <!-- AI Verdict Banner -->
+            <div id="result-verdict-banner" class="verdict-banner safe">
+              <div class="verdict-content-left">
+                <div id="verdict-banner-icon" class="verdict-icon-box">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <div>
+                  <div id="verdict-banner-title" class="verdict-title">LOW RISK — VERIFIED SECURE</div>
+                  <div id="verdict-banner-subtitle" class="verdict-subtitle">Behavioral heuristics passed within acceptable threshold.</div>
+                </div>
+              </div>
+              <div id="verdict-banner-meta" class="verdict-meta-chip font-mono">
+                ID: TXN-8492049 • Analyzed Just Now
+              </div>
+            </div>
+
+            <!-- Result Columns Grid -->
+            <div class="result-grid-layout">
+              
+              <!-- Left Column: Risk Score Dial -->
+              <div class="cyber-card gauge-card">
+                <div class="card-title" style="margin-bottom: 16px;">AI Risk Score Index</div>
+                
+                <!-- Circular SVG Gauge Mount Point -->
+                <div id="result-gauge-mount"></div>
+
+                <!-- Transaction Entity Metadata -->
+                <div style="width: 100%; border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-top: 10px; text-align: left;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--text-muted); font-size: 12px;">Queried Entity</span>
+                    <span id="res-meta-entity" class="font-mono" style="font-weight: 600; color: var(--text-main); font-size: 12px;">TXN-8492049</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--text-muted); font-size: 12px;">Channel</span>
+                    <span id="res-meta-channel" style="color: var(--text-secondary); font-size: 12px;">Credit Card</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--text-muted); font-size: 12px;">Amount</span>
+                    <span id="res-meta-amount" class="font-mono" style="font-weight: 700; color: var(--primary); font-size: 12px;">$1,250.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--text-muted); font-size: 12px;">IP Location</span>
+                    <span id="res-meta-ip" style="color: var(--text-secondary); font-size: 11.5px;">185.220.101.5 (NL)</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: var(--text-muted); font-size: 12px;">User Baseline</span>
+                    <span id="res-meta-location" style="color: var(--text-secondary); font-size: 11.5px;">California, US</span>
+                  </div>
+                </div>
+
+                <!-- Rescan Action -->
+                <button id="result-rescan-btn" class="btn btn-secondary" style="width: 100%; margin-top: 20px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10"/>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                  </svg>
+                  Scan Another Transaction
+                </button>
+              </div>
+
+              <!-- Right Column: Behavioral Breakdown & Recommendations -->
+              <div style="display: flex; flex-direction: column; gap: 24px;">
+                
+                <!-- Behavioral Breakdown Checklist -->
+                <div class="cyber-card">
+                  <div class="cyber-card-header">
+                    <div class="card-title-group">
+                      <h3 class="card-title">Behavioral Risk Breakdown</h3>
+                      <span class="card-subtitle">Factor telemetry evaluated by AI inspection algorithms</span>
+                    </div>
+                  </div>
+
+                  <div id="result-factors-list" class="factors-list">
+                    <!-- Dynamically populated by resultView.js -->
+                  </div>
+                </div>
+
+                <!-- Actionable Recommendations Card -->
+                <div class="cyber-card" style="border-color: var(--status-safe-border);">
+                  <div class="cyber-card-header">
+                    <div class="card-title-group">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                      <h3 class="card-title">AI Recommendation & Policy Enforcement</h3>
+                    </div>
+                  </div>
+
+                  <p id="result-recommendation-text" style="color: var(--text-secondary); line-height: 1.6; font-size: 13.5px; margin-bottom: 20px;">
+                    Low risk threshold met. Transaction approved and cleared for automated settlement.
+                  </p>
+
+                  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button id="result-export-btn" class="btn btn-secondary btn-sm">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                      </svg>
+                      Export Audit Dossier
+                    </button>
+                    <button id="result-watchlist-btn" class="btn btn-danger btn-sm">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                      </svg>
+                      Add Entity to Blacklist
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 4: ALERTS LOG & HISTORY
+             ================================================================== -->
+        <section id="view-alerts" class="view-section">
+          
+          <div class="cyber-card">
+            
+            <div class="cyber-card-header">
+              <div class="card-title-group">
+                <h2 class="card-title">Security Alerts Log & Audit History</h2>
+                <span class="card-subtitle">Comprehensive ledger of flagged transactions, reviews, and clean screenings</span>
+              </div>
+
+              <!-- Filter Controls -->
+              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <input 
+                  type="text" 
+                  id="alerts-search-input" 
+                  class="cyber-control" 
+                  placeholder="Filter by ID, entity, or channel..." 
+                  style="width: 240px;"
+                />
+
+                <div class="timeframe-pill-group">
+                  <button class="timeframe-btn alert-filter-btn active" data-filter="ALL">All</button>
+                  <button class="timeframe-btn alert-filter-btn" data-filter="CRITICAL">Critical</button>
+                  <button class="timeframe-btn alert-filter-btn" data-filter="REVIEW">Review</button>
+                  <button class="timeframe-btn alert-filter-btn" data-filter="SAFE">Safe</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerts Table -->
+            <div class="cyber-table-container">
+              <table class="cyber-table">
+                <thead>
+                  <tr>
+                    <th>Tx ID</th>
+                    <th>Timestamp</th>
+                    <th>Entity Identifier</th>
+                    <th>Payment Channel</th>
+                    <th>Amount</th>
+                    <th>Threat Level</th>
+                    <th style="text-align: right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="alerts-table-body">
+                  <!-- Injected dynamically by alertsView.js -->
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 5: SYSTEM SETTINGS
+             ================================================================== -->
+        <section id="view-settings" class="view-section">
+          
+          <div style="max-width: 800px; margin: 0 auto;">
+            
+            <div class="cyber-card" style="margin-bottom: 24px;">
+              <div class="cyber-card-header">
+                <div class="card-title-group">
+                  <h2 class="card-title">Backend API Integration Bridge</h2>
+                  <span class="card-subtitle">Connect your FastAPI, Flask, Node.js, or Django backend endpoints</span>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="cyber-form-group">
+                  <label class="cyber-label">API Base Endpoint URL</label>
+                  <input type="text" id="settings-api-url" class="cyber-control" value="http://localhost:8000/api/v1" />
+                </div>
+
+                <div style="display: flex; gap: 12px;">
+                  <button id="settings-test-api-btn" class="btn btn-secondary btn-sm">
+                    TEST CONNECTION
+                  </button>
+                  <button id="settings-save-btn" class="btn btn-primary btn-sm">
+                    SAVE ENDPOINT
+                  </button>
+                </div>
+
+                <div style="background: var(--primary-subtle); border: 1px solid var(--accent); border-radius: var(--radius-md); padding: 14px; font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+                  <b style="color: var(--primary);">Developer Note for Backend Team:</b><br/>
+                  The frontend makes RESTful JSON requests to <code>/transactions/analyze</code>, <code>/dashboard/kpis</code>, and <code>/analytics/chart</code>. When your backend is active, this interface connects without touching UI code.
+                </div>
+              </div>
+            </div>
+
+            <!-- Model Specifications -->
+            <div class="cyber-card">
+              <div class="cyber-card-header">
+                <div class="card-title-group">
+                  <h2 class="card-title">Detection Thresholds & Model Parameters</h2>
+                  <span class="card-subtitle">Threshold cutoffs for autonomous blocking vs manual analyst escalation</span>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 18px;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px;">
+                    <span>Critical Fraud Auto-Block Cutoff</span>
+                    <span class="font-mono" style="color: var(--status-danger); font-weight: 700;">Score &ge; 75%</span>
+                  </div>
+                  <div style="height: 6px; background: var(--bg-subtle); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 75%; height: 100%; background: var(--status-danger);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px;">
+                    <span>Manual Escalation Review Band</span>
+                    <span class="font-mono" style="color: var(--status-warning); font-weight: 700;">35% &ndash; 74%</span>
+                  </div>
+                  <div style="height: 6px; background: var(--bg-subtle); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 50%; height: 100%; background: var(--status-warning); margin-left: 35%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px;">
+                    <span>Autonomous Safe Clearance Band</span>
+                    <span class="font-mono" style="color: var(--status-safe); font-weight: 700;">0% &ndash; 34%</span>
+                  </div>
+                  <div style="height: 6px; background: var(--bg-subtle); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 35%; height: 100%; background: var(--status-safe);"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- Main JavaScript Module Entrypoint -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

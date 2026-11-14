@@ -1,0 +1,152 @@
+/* ==========================================================================
+   FraudShield AI - Refined & Subtle Animations
+   ========================================================================== */
+
+/* 1. Subtle Warning Pulse (Critical Fraud Status - Soft, Non-blinding) */
+@keyframes subtleDangerPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    border-color: rgba(220, 38, 38, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    border-color: rgba(220, 38, 38, 0.8);
+  }
+}
+
+.pulse-crimson {
+  animation: subtleDangerPulse 2.5s infinite ease-in-out;
+}
+
+/* 2. Soft Green Pulse (AI Engine Online Status) */
+@keyframes subtleGreenPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+.pulse-dot-emerald {
+  animation: subtleGreenPulse 2.5s infinite ease-in-out;
+}
+
+/* 3. Clean Light Shimmer / Skeleton Loading */
+@keyframes cleanShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #F0F4F2 25%,
+    #E6F7F0 50%,
+    #F0F4F2 75%
+  );
+  background-size: 200% 100%;
+  animation: cleanShimmer 1.8s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* 4. Elegant Radar Sweep Line for Scanner */
+@keyframes radarSweepClean {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.radar-scanner-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  box-shadow: 0 0 8px rgba(32, 201, 151, 0.5);
+  pointer-events: none;
+  animation: radarSweepClean 2s infinite ease-in-out;
+}
+
+/* 5. Toast Notification Transitions */
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-exit {
+  animation: toastSlideOut 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 6. Spin Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* 7. Subtle View Transition */
+@keyframes fadeInViewClean {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.view-transition {
+  animation: fadeInViewClean 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
